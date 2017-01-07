@@ -1,16 +1,15 @@
-/* 入口启动文件 */
-import React from 'react'
-import { render } from 'react-dom'
 
-import App from './containers/index'
+import React, { Component } from 'react';
+import ReactDOM, { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-if (__DEV__) {
-  console.info('[当前环境] 开发环境')
-}
-if (__PROD__) {
-  console.info('[当前环境] 生产环境')
-}
+import store from './redux/store';
+import RootApp from './containers/RootApp';
 
-const root = document.getElementById('app')
 
-render( <App />, root )
+let root = document.getElementById('app');
+render(
+    <Provider store={store}>
+        <RootApp />
+    </Provider>,
+    root);
